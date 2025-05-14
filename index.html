@@ -77,6 +77,25 @@
     required
   />
   <button type="submit">Notify Me</button>
+  <script>
+  const form = document.querySelector('form');
+  const container = document.querySelector('.container');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    fetch(form.action, {
+      method: 'POST',
+      mode: 'no-cors',           // avoid CORS errors
+      body: new FormData(form)
+    }).finally(() => {
+      container.innerHTML = `
+        <img src="logo.png" alt="Razomate" style="width:80px; margin-bottom:1rem;">
+        <h2>Thank you for signing up!</h2>
+        <p>We’re excited to have you onboard. Stay tuned!</p>
+      `;
+    });
+  });
+</script>
 </form>
 
     <p>Follow our journey on <a href="https://www.tiktok.com/@razomate" target="_blank">TikTok</a></p>
